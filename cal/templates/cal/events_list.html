@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3 class="display-5 text-center">All Events</h3>
+{% for event in events %}
+<div class="row">
+    <div class="col-md-6" style="width:50%;margin:auto;">
+        <a href="{% url 'event_edit' event.id %}"
+            class="btn btn-outline-primary btn-lg float-left mr-2 text-dark">Update</a>
+        <ul class="list-group mb-3">
+            <li class="list-group-item justify-content-end">{{event.title}}
+                <a href="{% url 'event_delete' event.id %}" class="close">&times;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}
